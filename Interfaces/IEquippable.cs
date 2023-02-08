@@ -1,4 +1,5 @@
 ﻿using RPGHeroes.Enums;
+using RPGHeroes.Heroes;
 using System;
 using System.Collections.Generic;
 using System.Linq;

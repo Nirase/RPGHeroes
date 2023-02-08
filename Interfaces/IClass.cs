@@ -14,7 +14,7 @@ namespace RPGHeroes.Interfaces
         HeroAttribute LevelUpStats { get; }
         WeaponType[] AllowedWeapons { get; }  
         ArmorType[] AllowedArmor { get; }
-        HeroAttribute LevelUp();
+        void LevelUp();
 
     }
 }
