@@ -1,11 +1,13 @@
-﻿using RPGHeroes.Interfaces;
+﻿using RPGHeroes.Enums;
+using RPGHeroes.Exceptions;
+using RPGHeroes.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPGHeroes.Enums
+namespace RPGHeroes.Equipment
 {
     internal class Armor : IEquippable
     {
@@ -39,5 +41,11 @@ namespace RPGHeroes.Enums
             ArmorType = armorType;
         }
 
+        public bool Equip(Hero.Hero hero)
+        {
+            if (hero.HeroClass.AllowedArmor.Contains(ArmorType) && hero.Level >= RequiredLevel)
+                return true;
+            throw new InvalidArmorException("You may not equip this armor");
+        }
     }
 }

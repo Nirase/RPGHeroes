@@ -12,5 +12,6 @@ namespace RPGHeroes.Interfaces
         string Name { get; }
         int RequiredLevel { get; }
         EquipmentSlot Slot { get; }
+        bool Equip(Hero hero);
     }
 }

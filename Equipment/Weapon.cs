@@ -1,5 +1,5 @@
-﻿using RPGHeroes.Abstract;
-using RPGHeroes.Enums;
+﻿using RPGHeroes.Enums;
+using RPGHeroes.Exceptions;
 using RPGHeroes.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPGHeroes
+namespace RPGHeroes.Equipment
 {
     internal class Weapon : IEquippable
     {
@@ -39,6 +39,13 @@ namespace RPGHeroes
             _equipmentSlot = EquipmentSlot.Weapon;
             WeaponDamage = weaponDamage;
             WeaponType = weaponType;
+        }
+
+        public bool Equip(Hero.Hero hero)
+        {
+            if (hero.HeroClass.AllowedWeapons.Contains(WeaponType) && hero.Level >= RequiredLevel)
+                return true;
+            throw new InvalidWeaponException("Can not equip this item");
         }
     }
 }
