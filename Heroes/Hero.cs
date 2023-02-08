@@ -1,6 +1,7 @@
 ﻿using RPGHeroes.Enums;
 using RPGHeroes.Equipment;
 using RPGHeroes.Interfaces;
+using RPGHeroes.Structs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -88,13 +89,53 @@ namespace RPGHeroes.Heroes
         }
         HeroAttribute TotalAttributes()
         {
-            HeroAttribute result = new HeroAttribute(_stats);
+            var result = new HeroAttribute(_stats);
             foreach(Armor value in _equipmentSlots.Values)
             {
                 result += value.ArmorAttribute;
             }
 
             return result;
+        }
+
+        public void Display()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"Name: {Name}");
+            sb.AppendLine($"Class: {ClassType.GetName(ClassType)}");
+            sb.AppendLine($"Level: {Level}");
+            sb.AppendLine(_stats.ToString());
+            sb.AppendLine($"Damage: {Damage().ToString()}");
+            Console.WriteLine(sb);
+        }
+
+        public int Damage()
+        {
+            var baseDamage = 0;
+            var totalAttributes = TotalAttributes();
+            switch(ClassType)
+            {
+                case ClassType.Mage:
+                    baseDamage = totalAttributes.intelligence; 
+                    break;
+                case ClassType.Warrior:
+                    baseDamage = totalAttributes.strength;
+                    break;
+                case ClassType.Ranger:
+                    baseDamage = totalAttributes.dexterity;
+                    break;
+                case ClassType.Rogue:
+                    baseDamage = totalAttributes.dexterity;
+                    break;
+                default:
+                    baseDamage = 0;
+                    break;
+            }
+
+            if (_equipmentSlots[EquipmentSlot.Weapon] == null)
+                return 1 * (1 + baseDamage / 100);
+            else
+                return ((Weapon)_equipmentSlots[EquipmentSlot.Weapon]).WeaponDamage * (1 + (baseDamage / 100));
         }
 
         void IClass.LevelUp()

@@ -1,6 +1,8 @@
 ﻿using RPGHeroes.Enums;
 using RPGHeroes.Exceptions;
+using RPGHeroes.Heroes;
 using RPGHeroes.Interfaces;
+using RPGHeroes.Structs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,9 +43,9 @@ namespace RPGHeroes.Equipment
             ArmorType = armorType;
         }
 
-        public bool Equip(Hero.Hero hero)
+        public bool Equip(Hero hero)
         {
-            if (hero.HeroClass.AllowedArmor.Contains(ArmorType) && hero.Level >= RequiredLevel)
+            if (hero.AllowedArmor.Contains(ArmorType) && hero.Level >= RequiredLevel)
                 return true;
             throw new InvalidArmorException("You may not equip this armor");
         }
