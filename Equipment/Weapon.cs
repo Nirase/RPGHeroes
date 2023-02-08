@@ -1,5 +1,6 @@
 ﻿using RPGHeroes.Enums;
 using RPGHeroes.Exceptions;
+using RPGHeroes.Heroes;
 using RPGHeroes.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -41,9 +42,9 @@ namespace RPGHeroes.Equipment
             WeaponType = weaponType;
         }
 
-        public bool Equip(Hero.Hero hero)
+        public bool Equip(Hero hero)
         {
-            if (hero.HeroClass.AllowedWeapons.Contains(WeaponType) && hero.Level >= RequiredLevel)
+            if (hero.AllowedWeapons.Contains(WeaponType) && hero.Level >= RequiredLevel)
                 return true;
             throw new InvalidWeaponException("Can not equip this item");
         }
