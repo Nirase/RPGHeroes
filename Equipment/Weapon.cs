@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace RPGHeroes.Equipment
 {
-    internal class Weapon : IEquippable
+    public class Weapon : IEquippable
     {
         private string _name;
         public string Name

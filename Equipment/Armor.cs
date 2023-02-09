@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace RPGHeroes.Equipment
 {
-    internal class Armor : IEquippable
+    public class Armor : IEquippable
     {
         private string _name;
         public string Name
