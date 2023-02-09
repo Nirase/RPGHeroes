@@ -44,5 +44,17 @@ namespace RPGHeroes.Structs
         {
             return $"Strength: {strength}\nDexterity: {dexterity}\nIntelligence: {intelligence}";
         }
+
+        public static bool operator ==(HeroAttribute a, HeroAttribute b)
+        {
+            if(a.strength == b.strength && a.dexterity == b.dexterity && a.intelligence == b.intelligence)
+                return true;
+            return false;
+        }
+
+        public static bool operator !=(HeroAttribute a, HeroAttribute b)
+        {
+            return !(a == b);
+        }
     }
 }
