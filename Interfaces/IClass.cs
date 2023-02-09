@@ -13,8 +13,6 @@ namespace RPGHeroes.Interfaces
         ClassType ClassType { get; }
         HeroAttribute BaseStats { get; }
         HeroAttribute LevelUpStats { get; }
-        WeaponType[] AllowedWeapons { get; }  
-        ArmorType[] AllowedArmor { get; }
         public void LevelUp();
 
     }
