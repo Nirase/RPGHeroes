@@ -24,12 +24,22 @@ namespace RPGHeroes.Structs
             this.dexterity = dexterity;
             this.intelligence = intelligence;
         }
-
+        /// <summary>
+        /// Adds together the stats of this instance and another heroattribute
+        /// </summary>
+        /// <param name="other">Other HeroAttribute Instance</param>
+        /// <returns>New HeroAttribute with values combined</returns>
         public HeroAttribute Increase(HeroAttribute other)
         {
             return new HeroAttribute(strength + other.strength, dexterity + other.dexterity, intelligence + other.intelligence);
         }
-
+        /// <summary>
+        /// Adds together stats of this HeroAttribute and int values
+        /// </summary>
+        /// <param name="strength"></param>
+        /// <param name="dexterity"></param>
+        /// <param name="intelligence"></param>
+        /// <returns>New HeroAttribute with values combined</returns>
         public HeroAttribute Increase(int strength, int dexterity, int intelligence)
         {
             return new HeroAttribute(this.strength + strength, this.dexterity + dexterity, this.intelligence + intelligence);
