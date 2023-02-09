@@ -33,6 +33,11 @@ namespace RPGHeroes.Heroes
         public ArmorType[] AllowedArmor { get => _allowedArmor; }
         public Dictionary<EquipmentSlot, IEquippable?> _equipmentSlots;
 
+        /// <summary>
+        /// Initializes a hero with values based on the classType param.
+        /// </summary>
+        /// <param name="name">Hero name</param>
+        /// <param name="classType">Hero Class</param>
         public Hero(string name, ClassType classType)
         {
             _equipmentSlots = new();
@@ -84,13 +89,21 @@ namespace RPGHeroes.Heroes
             }
         }
 
-
+        /// <summary>
+        /// Equips a piece of equipment on a this hero
+        /// </summary>
+        /// <param name="equippable">Item to equip</param>
         public void Equip(IEquippable equippable)
         {
 
             if (equippable.Equip(this))
                 _equipmentSlots[equippable.Slot] = equippable;
         }
+
+        /// <summary>
+        /// Calculates the total HeroAttributes the hero has with armor on.
+        /// </summary>
+        /// <returns>Total HeroAttribute</returns>
         public HeroAttribute TotalAttributes()
         {
             var result = new HeroAttribute(_stats);
@@ -105,6 +118,9 @@ namespace RPGHeroes.Heroes
             return result;
         }
 
+        /// <summary>
+        /// Displays all details of the hero
+        /// </summary>
         public void Display()
         {
             StringBuilder sb = new StringBuilder();
@@ -116,6 +132,10 @@ namespace RPGHeroes.Heroes
             Console.WriteLine(sb);
         }
 
+        /// <summary>
+        /// Calculates how much damage the hero does
+        /// </summary>
+        /// <returns>Damage</returns>
         public double Damage()
         {
             var baseDamage = 0d;
@@ -145,6 +165,9 @@ namespace RPGHeroes.Heroes
                 return ((Weapon)_equipmentSlots[EquipmentSlot.Weapon]).WeaponDamage * (1 + (baseDamage / 100));
         }
 
+        /// <summary>
+        /// Levels the hero up by increasing their level and their stats.
+        /// </summary>
         public void LevelUp()
         {
             ++Level;

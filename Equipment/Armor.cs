@@ -43,6 +43,12 @@ namespace RPGHeroes.Equipment
             ArmorType = armorType;
         }
 
+        /// <summary>
+        /// Checks if this can be equipped on a hero
+        /// </summary>
+        /// <param name="hero">Hero to equip armor on</param>
+        /// <returns>If armor can be equipped</returns>
+        /// <exception cref="InvalidArmorException">If the hero can't equip the armor</exception>
         public bool Equip(Hero hero)
         {
             if (hero.AllowedArmor.Contains(ArmorType) && hero.Level >= RequiredLevel)

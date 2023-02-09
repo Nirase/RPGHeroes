@@ -41,7 +41,12 @@ namespace RPGHeroes.Equipment
             WeaponDamage = weaponDamage;
             WeaponType = weaponType;
         }
-
+        /// <summary>
+        /// Checks if this can be equipped on a hero
+        /// </summary>
+        /// <param name="hero">Hero to equip weapon on</param>
+        /// <returns>If weapon can be equipped</returns>
+        /// <exception cref="InvalidArmorException">If the hero can't equip the weapon</exception>
         public bool Equip(Hero hero)
         {
             if (hero.AllowedWeapons.Contains(WeaponType) && hero.Level >= RequiredLevel)
