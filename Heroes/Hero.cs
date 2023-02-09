@@ -12,7 +12,7 @@ namespace RPGHeroes.Heroes
 {
     public class Hero : IClass
     {
-        public string Name { get; set; }
+        public string Name { get; private set; }
         private HeroAttribute _stats;
         public HeroAttribute Stats { get { return _stats; } }
         public int Level { get; private set; }
