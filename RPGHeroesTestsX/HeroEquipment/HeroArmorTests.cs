@@ -1,58 +1,34 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RPGHeroes.Equipment;
+﻿using RPGHeroes.Equipment;
 using RPGHeroes.Exceptions;
 using RPGHeroes.Heroes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RPGHeroes
 {
-    [TestClass]
     public class HeroArmorTests
     {
-        [TestMethod]
+        [Fact]
         public void Hero_EquipArmor_ArmorShouldBeEquipped()
         {
             Hero hero = new("Red", Enums.ClassType.Mage);
             Armor armor = new("Common Cloth Chest", 1, new Structs.HeroAttribute(1, 0, 0), Enums.EquipmentSlot.Body, Enums.ArmorType.Cloth);
             hero.Equip(armor);
-            Assert.IsTrue(hero._equipmentSlots[Enums.EquipmentSlot.Body] == armor);
+            Assert.Equal(armor, hero._equipmentSlots[Enums.EquipmentSlot.Body]);
         }
 
-        [TestMethod]
+        [Fact]
         public void Hero_EquipWrongArmorType_ShouldThrowInvalidArmorException()
         {
             Hero hero = new("Red", Enums.ClassType.Warrior);
             Armor armor = new("Common Cloth Chest", 1, new Structs.HeroAttribute(1, 0, 0), Enums.EquipmentSlot.Body, Enums.ArmorType.Cloth);
-            try
-            {
-                hero.Equip(armor);
-                Assert.Fail();
-            }
-            catch (Exception error)
-            {
-                Assert.IsTrue(error is InvalidArmorException);
-            }
-
+            Assert.Throws<InvalidArmorException>(() => { hero.Equip(armor); });
         }
 
-        [TestMethod]
+        [Fact]
         public void Hero_EquipHigherLevelArmorType_ShouldThrowInvalidArmorException()
         {
             Hero hero = new("Red", Enums.ClassType.Warrior);
             Armor armor = new("Common Cloth Chest", 1, new Structs.HeroAttribute(1, 0, 0), Enums.EquipmentSlot.Body, Enums.ArmorType.Cloth);
-            try
-            {
-                hero.Equip(armor);
-                Assert.Fail();
-            }
-            catch (Exception error)
-            {
-                Assert.IsTrue(error is InvalidArmorException);
-            }
+            Assert.Throws<InvalidArmorException>(() => { hero.Equip(armor); });
         }
 
     }
