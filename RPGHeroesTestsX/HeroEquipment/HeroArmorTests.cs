@@ -20,7 +20,7 @@ namespace RPGHeroes
         {
             Hero hero = new("Red", Enums.ClassType.Warrior);
             Armor armor = new("Common Cloth Chest", 1, new Structs.HeroAttribute(1, 0, 0), Enums.EquipmentSlot.Body, Enums.ArmorType.Cloth);
-            Assert.Throws<InvalidArmorException>(() => { hero.Equip(armor); });
+            Assert.Throws<InvalidArmorException>(() => hero.Equip(armor));
         }
 
         [Fact]
@@ -28,7 +28,7 @@ namespace RPGHeroes
         {
             Hero hero = new("Red", Enums.ClassType.Warrior);
             Armor armor = new("Common Cloth Chest", 1, new Structs.HeroAttribute(1, 0, 0), Enums.EquipmentSlot.Body, Enums.ArmorType.Cloth);
-            Assert.Throws<InvalidArmorException>(() => { hero.Equip(armor); });
+            Assert.Throws<InvalidArmorException>(() => hero.Equip(armor));
         }
 
     }
