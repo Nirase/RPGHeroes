@@ -121,7 +121,7 @@ namespace RPGHeroes.Heroes
         /// <summary>
         /// Displays all details of the hero
         /// </summary>
-        public void Display()
+        public string Display()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"Name: {Name}");
@@ -129,7 +129,7 @@ namespace RPGHeroes.Heroes
             sb.AppendLine($"Level: {Level}");
             sb.AppendLine(_stats.ToString());
             sb.AppendLine($"Damage: {Damage().ToString()}");
-            Console.WriteLine(sb);
+            return sb.ToString();
         }
 
         /// <summary>

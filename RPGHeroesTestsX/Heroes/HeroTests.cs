@@ -1,10 +1,14 @@
+using RPGHeroes.Enums;
 using RPGHeroes.Equipment;
 using RPGHeroes.Heroes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+
 namespace RPGHeroesTestsX.Heroes
 {
     public class HeroTests
@@ -144,6 +148,20 @@ namespace RPGHeroesTestsX.Heroes
             hero.Equip(legs);
             hero.Equip(head);
             Assert.Equal(2.22d, hero.Damage());
+        }
+
+        [Fact]
+        public void Hero_DisplayState_ShouldMatchInput()
+        {
+            Hero hero = new("Super Nice Silver Sara", RPGHeroes.Enums.ClassType.Mage);
+            StringBuilder sb = new();
+            sb.AppendLine($"Name: Super Nice Silver Sara");
+            sb.AppendLine($"Class: Mage");
+            sb.AppendLine($"Level: 1");
+            sb.AppendLine(hero.Stats.ToString());
+            sb.AppendLine($"Damage: 1,08");
+
+            Assert.Equal(sb.ToString(), hero.Display());
         }
     }
 }
