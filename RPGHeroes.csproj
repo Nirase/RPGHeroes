@@ -8,8 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="RPGHeroesTestsX\**" />
     <Compile Remove="RPGHeroesTests\**" />
+    <EmbeddedResource Remove="RPGHeroesTestsX\**" />
     <EmbeddedResource Remove="RPGHeroesTests\**" />
+    <None Remove="RPGHeroesTestsX\**" />
     <None Remove="RPGHeroesTests\**" />
   </ItemGroup>
 
