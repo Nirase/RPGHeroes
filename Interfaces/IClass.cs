@@ -11,7 +11,6 @@ namespace RPGHeroes.Interfaces
     public interface IClass
     {
         ClassType ClassType { get; }
-        HeroAttribute BaseStats { get; }
         HeroAttribute LevelUpStats { get; }
         WeaponType[] AllowedWeapons { get; }  
         ArmorType[] AllowedArmor { get; }

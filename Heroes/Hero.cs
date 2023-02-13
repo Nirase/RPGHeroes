@@ -20,9 +20,6 @@ namespace RPGHeroes.Heroes
         private ClassType _classType;
         public ClassType ClassType { get => _classType; }
 
-        private HeroAttribute _baseStats;
-        public HeroAttribute BaseStats { get => _baseStats; }
-        
         private HeroAttribute _levelUpStats;
         public HeroAttribute LevelUpStats { get => _levelUpStats; }
         
@@ -54,36 +51,31 @@ namespace RPGHeroes.Heroes
                 case ClassType.Mage:
                     _allowedWeapons = new WeaponType[] { WeaponType.Staff, WeaponType.Wand };
                     _allowedArmor = new ArmorType[] { ArmorType.Cloth };
-                    _baseStats = new(1, 1, 8);
-                    _stats = new(_baseStats);
+                    _stats = new(1, 1, 8);
                     _levelUpStats = new(1, 1, 5);
                     break;
                 case ClassType.Warrior:
                     _allowedWeapons = new WeaponType[] { WeaponType.Axe, WeaponType.Sword, WeaponType.Hammer };
                     _allowedArmor = new ArmorType[] { ArmorType.Mail, ArmorType.Plate };
-                    _baseStats = new(5, 2, 1);
-                    _stats = new(_baseStats);
+                    _stats = new(5, 2, 1);
                     _levelUpStats = new(3, 2, 1);
                     break;
                 case ClassType.Ranger:
                     _allowedWeapons = new WeaponType[] { WeaponType.Bow };
                     _allowedArmor = new ArmorType[] { ArmorType.Leather, ArmorType.Mail };
-                    _baseStats = new(1, 7, 1);
-                    _stats = new(_baseStats);
+                    _stats = new(1, 7, 1);
                     _levelUpStats = new(1, 5, 1);
                     break;
                 case ClassType.Rogue:
                     _allowedWeapons = new WeaponType[] { WeaponType.Dagger, WeaponType.Sword };
                     _allowedArmor = new ArmorType[] { ArmorType.Leather, ArmorType.Mail };
-                    _baseStats = new(2, 6, 1);
-                    _stats = new(_baseStats);
+                    _stats = new(2, 6, 1);
                     _levelUpStats = new(1, 4, 1);
                     break;
                 default:
                     _allowedArmor = new ArmorType[0];
                     _allowedWeapons = new WeaponType[0];
-                    _baseStats = new(0, 0, 0);
-                    _stats = new(_baseStats);
+                    _stats = new(0,0,0);
                     _levelUpStats = new(0, 0, 0);
                     break;
             }
