@@ -3,6 +3,7 @@ using RPGHeroes.Equipment;
 using RPGHeroes.Heroes;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
@@ -13,6 +14,11 @@ namespace RPGHeroesTestsX.Heroes
 {
     public class HeroTests
     {
+        public HeroTests() 
+        {
+            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
+        }
+
         [Fact]
         public void CreateHero_NameInConstructor_ShouldBeSetToInput()
         {
@@ -204,7 +210,7 @@ namespace RPGHeroesTestsX.Heroes
             sb.AppendLine($"Class: Mage");
             sb.AppendLine($"Level: 1");
             sb.AppendLine(hero.Stats.ToString());
-            sb.AppendLine($"Damage: 1,08");
+            sb.AppendLine($"Damage: 1.08");
 
             Assert.Equal(sb.ToString(), hero.Display());
         }
